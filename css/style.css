@@ -6820,7 +6820,7 @@ a:active {
 }
 @media (max-width: 991.98px) {
   .site-navbar.bg-light {
-    background: #fff !important;
+    background: #000 !important;
     top: 0;
   }
 }
