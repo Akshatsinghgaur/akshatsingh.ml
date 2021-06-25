@@ -7446,3 +7446,9 @@ a:active {
     width: 0;
   }
 }
+
+@media only screen and (max-width: 991px) {
+  #pb-navbar {
+    display: none;
+  }
+}
