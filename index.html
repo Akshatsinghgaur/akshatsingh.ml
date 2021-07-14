@@ -248,60 +248,105 @@
 					<h2>Completed <strong>Projects</strong></h2>
 				</div>
 			</div>
+			<div class="filters">
+				<ul>
+					<li class="active" data-class="all">All</li>
+					<li data-class="logo">Logo</li>
+					<li data-class="post">Insta Post</li>
+					<li data-class="apps">Android Apss</li>
+					<li data-class="ycart">Youtube Channel Art</li>
+				</ul>
+			</div>
 			<div class="filters-content">
 				<div class="row grid">
-					<div class="single-portfolio col-sm-4 all mockup">
+					<div class="single-portfolio col-sm-4" data-class="logo">
+						<div class="relative">
+							<img class="image img-fluid" data-cfsrc="images/l1.png" style="display:none;visibility:hidden;">
+						</div>
+						<div class="p-inner">
+							
+							<div class="cat">Logo</div>
+						</div>
+					</div>
+					<div class="single-portfolio col-sm-4" data-class="logo">
+						<div class="relative">
+							<img class="image img-fluid" data-cfsrc="images/l2.png" style="display:none;visibility:hidden;">
+						</div>
+						<div class="p-inner">
+							
+							<div class="cat">Logo</div>
+						</div>
+					</div>
+					<div class="single-portfolio col-sm-4" data-class="logo">
+						<div class="relative">
+							<img class="image img-fluid" data-cfsrc="images/l3.png" style="display:none;visibility:hidden;">
+						</div>
+						<div class="p-inner">
+							
+							<div class="cat">Logo</div>
+						</div>
+					</div>
+					<div class="single-portfolio col-sm-4" data-class="post">
 						<div class="relative">
 							<img class="image img-fluid" data-cfsrc="images/p1.png" style="display:none;visibility:hidden;">
 						</div>
 						<div class="p-inner">
-							<h4>Add Heading</h4>
+							
 							<div class="cat">Carousel</div>
 						</div>
 					</div>
-					<div class="single-portfolio col-sm-4 all mockup">
+					<div class="single-portfolio col-sm-4" data-class="post">
 						<div class="relative">
 							<img class="image img-fluid" data-cfsrc="images/p2.png" style="display:none;visibility:hidden;">
 						</div>
 						<div class="p-inner">
-							<h4>Add Heading</h4>
+							
 							<div class="cat">Carousel</div>
 						</div>
 					</div>
-					<div class="single-portfolio col-sm-4 all mockup">
+					<div class="single-portfolio col-sm-4" data-class="post">
 						<div class="relative">
 							<img class="image img-fluid" data-cfsrc="images/p3.png" style="display:none;visibility:hidden;">
 						</div>
 						<div class="p-inner">
-							<h4>Add Heading</h4>
+							
 							<div class="cat">Carousel</div>
 						</div>
 					</div>
-					<div class="single-portfolio col-sm-4 all mockup">
+					<div class="single-portfolio col-sm-4" data-class="apps">
 						<div class="relative">
-							<img class="image img-fluid" data-cfsrc="images/p5.png" style="display:none;visibility:hidden;">
+							<img class="image img-fluid" data-cfsrc="images/a1.png" style="display:none;visibility:hidden;">
 						</div>
 						<div class="p-inner">
-							<h4>Add Heading</h4>
+							
 							<div class="cat">Android App</div>
 						</div>
 					</div>
-					<div class="single-portfolio col-sm-4 all mockup">
+					<div class="single-portfolio col-sm-4" data-class="apps">
 						<div class="relative">
-							<img class="image img-fluid" data-cfsrc="images/p4.png" style="display:none;visibility:hidden;">
+							<img class="image img-fluid" data-cfsrc="images/a2.png" style="display:none;visibility:hidden;">
 						</div>
 						<div class="p-inner">
-							<h4>Add Heading</h4>
+							
 							<div class="cat">Android App</div>
 						</div>
 					</div>
-					<div class="single-portfolio col-sm-4 all mockup">
+					<div class="single-portfolio col-sm-4" data-class="apps">
 						<div class="relative">
-							<img class="image img-fluid" data-cfsrc="images/p6.png" style="display:none;visibility:hidden;">
+							<img class="image img-fluid" data-cfsrc="images/a3.png" style="display:none;visibility:hidden;">
 						</div>
 						<div class="p-inner">
-							<h4>Add Heading</h4>
+							
 							<div class="cat">Android App</div>
+						</div>
+					</div>
+					<div class="single-portfolio" data-class="ycart">
+						<div class="relative">
+							<img class="image img-fluid" data-cfsrc="images/yca-1.png" style="display:none;visibility:hidden;">
+						</div>
+						<div class="p-inner">
+							
+							<div class="cat">Youtube Channel Art</div>
 						</div>
 					</div>
 				</div>
@@ -448,6 +493,35 @@
 </body>
 
 	<!-- Scripts -->
+	<script>
+		const listItems = document.querySelectorAll('li');
+		const allimages = document.querySelectorAll('.single-portfolio');
+		
+		function toggleActiveClass(active){
+			listItems.forEach(item => {
+			item.classList.remove('active');
+			})
+			active.classList.add('active');
+		}
+		
+		function toggleimages(dataClass){
+			if(dataClass === 'all'){
+				for(let i = 0; i<allimages.length; i++){
+					allimages[i].style.display = 'block';
+				}
+			}else{
+				for(let i = 0; i<allimages.length; i++)
+					allimages[i].dataset.class === dataClass ? allimages[i].style.display = 'block' : allimages[i].style.display = 'none';
+			}
+		}
+		
+		for(let i = 0; i < listItems.length; i++){
+			listItems[i].addEventListener('click', function(){
+				toggleActiveClass(listItems[i]);
+				toggleimages(listItems[i].dataset.class);
+			});
+		}
+	</script>
 	<script src="js/vendor/jquery.min.js"></script>
 	<script src="js/vendor/query.js"></script>
 	<script src="js/custom.js"></script>
